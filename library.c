@@ -206,14 +206,19 @@ char* read_line()
 /**
  * @brief Reads a single character from standard input (stdin).
  *
- * This function reads one character using a low-level system call.
- * It does not handle errors, so the behavior is undefined if an error occurs.
+ * This function uses a low-level system call to read one byte from stdin.
  *
- * @return The character read from stdin.
+ * @return The character read from stdin, or '\0' if an error occurs.
  */
 char read_char()
 {
     char c;
-    fread_line(&c, 1);
-    return c;
+    const ssize_t bytes_read = fread_line(&c, 1);
+    // Handle errors
+    if (bytes_read == 1)
+    {
+        return c;
+    }
+
+    return '\0';
 }

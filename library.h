@@ -50,10 +50,9 @@ ssize_t fread_line(char* buffer, size_t size);
 /**
  * @brief Reads a single character from standard input (stdin).
  *
- * This function reads one character using a low-level system call.
- * It does not handle errors, so the behavior is undefined if an error occurs.
+ * This function uses a low-level system call to read one byte from stdin.
  *
- * @return The character read from stdin.
+ * @return The character read from stdin, or '\0' if an error occurs.
  */
 char read_char();
 
