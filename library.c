@@ -194,7 +194,7 @@ char* read_line()
         }
 
         // Check if we have an EOF or newline
-        if (length > 0 && buffer[length - 1] == EOF || buffer[length - 1] == '\n')
+        if (length > 0 && (buffer[length - 1] == EOF || buffer[length - 1] == '\n'))
         {
             // Add a null terminator
             buffer[length - 1] = '\0';
