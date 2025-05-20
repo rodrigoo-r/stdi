@@ -3,6 +3,11 @@
 #include <unistd.h>
 #include "library.h"
 
+#if defined(__cplusplus)
+extern "C"
+{
+#endif
+
 #ifndef STDI_READ_LINE_BUFFER_SIZE
 #define STDI_READ_LINE_BUFFER_SIZE 250
 #endif
@@ -18,6 +23,13 @@
 
 #ifndef FALSE
 #define FALSE 0
+#endif
+
+typedef int bool;
+typedef unsigned long int size_t;
+
+#ifndef NULL
+#define NULL ((void*)0)
 #endif
 
 /**
@@ -222,3 +234,7 @@ char read_char()
 
     return '\0';
 }
+
+#if defined(__cplusplus)
+}
+#endif

@@ -1,6 +1,11 @@
 #ifndef STDI_LIBRARY_H
 #define STDI_LIBRARY_H
 
+#if defined(__cplusplus)
+extern "C"
+{
+#endif
+
 /**
  * @brief Reads a line of input from standard input (stdin) using a low-level system call.
  *
@@ -55,5 +60,9 @@ ssize_t fread_line(char* buffer, size_t size);
  * @return The character read from stdin, or '\0' if an error occurs.
  */
 char read_char();
+
+#if defined(__cplusplus)
+}
+#endif
 
 #endif //STDI_LIBRARY_H
