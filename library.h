@@ -45,9 +45,12 @@ typedef long int ssize_t;
 #define NULL ((void*)0)
 #endif
 
-#include <stdlib.h>
-#include <sys/syscall.h>
-#include <unistd.h>
+// Guard against Windows incompatibility
+#ifndef _WIN32
+#   include <stdlib.h>
+#   include <sys/syscall.h>
+#   include <unistd.h>
+#endif
 
 /**
  * @brief Reads a specified number of bytes from standard input (stdin) into a buffer.
@@ -60,7 +63,12 @@ typedef long int ssize_t;
  */
 inline ssize_t fread_line(char* buffer, const size_t size)
 {
+    // Guard against Windows incompatibility
+#   ifndef _WIN32
     return syscall(SYS_read, STDIN_FILENO, buffer, size);
+#   else
+    return -1;
+#   endif
 }
 
 /**
@@ -81,6 +89,8 @@ inline ssize_t fread_line(char* buffer, const size_t size)
 // @deprecated - Computationally expensive, use at your own risk.
 inline char* raw_read_line()
 {
+    // Guard against Windows incompatibility
+#   ifndef _WIN32
     // Allocate the string (+1 for the null terminator)
     char *buffer = malloc(sizeof(char) * (STDI_READ_LINE_BUFFER_SIZE + 1));
 
@@ -139,6 +149,9 @@ inline char* raw_read_line()
     }
 
     return buffer;
+#   else
+    return NULL;
+#   endif
 }
 
 /**
@@ -158,6 +171,8 @@ inline char* raw_read_line()
  */
 inline char* read_line()
 {
+    // Guard against Windows incompatibility
+#   ifndef _WIN32
     // Advice: call fflush(stdout) before calling read_line()
     // Or flush_write_buffer() from stdo which is compatible with
     // fluentlibc
@@ -230,6 +245,9 @@ inline char* read_line()
             return buffer;
         }
     }
+#   else
+    return NULL;
+#   endif
 }
 
 /**
@@ -241,6 +259,8 @@ inline char* read_line()
  */
 inline char read_char()
 {
+    // Guard against Windows incompatibility
+#   ifndef _WIN32
     char c;
     const ssize_t bytes_read = fread_line(&c, 1);
     // Handle errors
@@ -250,6 +270,9 @@ inline char read_char()
     }
 
     return '\0';
+#   else
+    return '\0';
+#   endif
 }
 
 #if defined(__cplusplus)
