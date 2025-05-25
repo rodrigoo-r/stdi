@@ -33,7 +33,11 @@ extern "C"
 #define FALSE 0
 #endif
 
+// Prevent bool override in C++
+#if !defined(__cplusplus)
 typedef int bool;
+#endif
+
 typedef unsigned long int size_t;
 typedef long int ssize_t;
 
