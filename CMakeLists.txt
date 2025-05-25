@@ -3,4 +3,5 @@ project(stdi C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_library(stdi STATIC library.c)
+add_library(stdi STATIC library.c
+        library.h)
