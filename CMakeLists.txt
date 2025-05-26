@@ -3,5 +3,5 @@ project(stdi C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_library(stdi STATIC library.c
-        library.h)
+add_library(stdi STATIC include/fluent/stdi/library.c
+        include/fluent/stdi/library.h)
