@@ -8,4 +8,4 @@
  * under certain conditions; type `show c' for details.
 */
 
-#include "include/fluent/stdi/stdi.h"
+#include "stdi.h"
