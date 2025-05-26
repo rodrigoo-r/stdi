@@ -8,8 +8,8 @@
  * under certain conditions; type `show c' for details.
 */
 
-#ifndef STDI_LIBRARY_H
-#define STDI_LIBRARY_H
+#ifndef FLUENT_LIBC_STDI_LIBRARY_H
+#define FLUENT_LIBC_STDI_LIBRARY_H
 
 #if defined(__cplusplus)
 extern "C"
@@ -279,4 +279,4 @@ inline char read_char()
 }
 #endif
 
-#endif //STDI_LIBRARY_H
+#endif //FLUENT_LIBC_STDI_LIBRARY_H
