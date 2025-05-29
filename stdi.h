@@ -24,25 +24,12 @@ extern "C"
 #define EOF (-1)
 #endif
 
-// Define true/false values
-#ifndef TRUE
-#define TRUE 1
-#endif
-
-#ifndef FALSE
-#define FALSE 0
-#endif
-
-// Prevent bool override in C++
-#if !defined(__cplusplus)
-typedef int bool;
-#endif
-
-typedef unsigned long int size_t;
-typedef long int ssize_t;
-
-#ifndef NULL
-#define NULL ((void*)0)
+#ifndef FLUENT_LIBC_RELEASE
+#   include <types.h> // fluent_libc
+#   include <std_bool.h> // fluent_libc
+#else
+#   include <fluent/types/types.h> // fluent_libc
+#   include <fluent/std_bool/std_bool.h> // fluent_libc
 #endif
 
 // Guard against Windows incompatibility
