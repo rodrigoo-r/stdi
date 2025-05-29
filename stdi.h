@@ -61,7 +61,7 @@ typedef long int ssize_t;
  * @param size The maximum number of bytes to read.
  * @return The number of bytes read, or -1 if an error occurs.
  */
-inline ssize_t fread_line(char* buffer, const size_t size)
+static inline ssize_t fread_line(char* buffer, const size_t size)
 {
     // Guard against Windows incompatibility
 #   ifndef _WIN32
@@ -87,7 +87,7 @@ inline ssize_t fread_line(char* buffer, const size_t size)
  * @warning The caller is responsible for freeing the memory allocated for the returned string.
  */
 // @deprecated - Computationally expensive, use at your own risk.
-inline char* raw_read_line()
+static inline char* raw_read_line()
 {
     // Guard against Windows incompatibility
 #   ifndef _WIN32
@@ -169,7 +169,7 @@ inline char* raw_read_line()
  *
  * @warning The caller is responsible for freeing the memory allocated for the returned string.
  */
-inline char* read_line()
+static inline char* read_line()
 {
     // Guard against Windows incompatibility
 #   ifndef _WIN32
@@ -257,7 +257,7 @@ inline char* read_line()
  *
  * @return The character read from stdin, or '\0' if an error occurs.
  */
-inline char read_char()
+static inline char read_char()
 {
     // Guard against Windows incompatibility
 #   ifndef _WIN32
